@@ -120,3 +120,358 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Custom animations for special words */
+@keyframes special-glow {
+  0%,
+  100% {
+    text-shadow: 0 0 10px rgba(255, 255, 0, 0.8),
+      0 0 20px rgba(255, 192, 203, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(255, 255, 0, 1),
+      0 0 30px rgba(255, 192, 203, 0.8), 0 0 40px rgba(255, 255, 255, 0.6);
+    transform: scale(1.1);
+  }
+}
+
+@keyframes rainbow-text {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  25% {
+    filter: hue-rotate(90deg);
+  }
+  50% {
+    filter: hue-rotate(180deg);
+  }
+  75% {
+    filter: hue-rotate(270deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+.special-word {
+  animation: special-glow 2s ease-in-out infinite,
+    rainbow-text 3s linear infinite;
+}
+
+/* Title typewriter animation - only once per page load */
+@keyframes title-typewriter {
+  0% {
+    width: 0;
+    border-right: 3px solid rgba(255, 255, 255, 0.8);
+  }
+  80% {
+    width: 100%;
+    border-right: 3px solid rgba(255, 255, 255, 0.8);
+  }
+  90% {
+    width: 100%;
+    border-right: 3px solid transparent;
+  }
+  100% {
+    width: 100%;
+    border-right: 3px solid transparent;
+  }
+}
+
+@keyframes year-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.title-typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: title-typewriter 2s steps(10, end) forwards;
+}
+
+.year-appear {
+  opacity: 0;
+  animation: year-appear 0.8s ease-out 1.2s forwards;
+}
+
+/* Unique Name Animation - 3D Floating Effect */
+@keyframes name-float {
+  0%,
+  100% {
+    transform: translateY(0px) rotateX(0deg) rotateY(0deg);
+  }
+  25% {
+    transform: translateY(-8px) rotateX(5deg) rotateY(-2deg);
+  }
+  50% {
+    transform: translateY(-12px) rotateX(0deg) rotateY(3deg);
+  }
+  75% {
+    transform: translateY(-6px) rotateX(-3deg) rotateY(-1deg);
+  }
+}
+
+@keyframes name-typewriter {
+  0% {
+    width: 0;
+    border-right: 3px solid rgba(255, 255, 255, 0.8);
+  }
+  40% {
+    width: 100%;
+    border-right: 3px solid rgba(255, 255, 255, 0.8);
+  }
+  60% {
+    width: 100%;
+    border-right: 3px solid transparent;
+  }
+  100% {
+    width: 100%;
+    border-right: 3px solid transparent;
+  }
+}
+
+@keyframes name-particle {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-10px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.5);
+  }
+}
+
+.name-unique {
+  position: relative;
+  display: inline-block;
+  color: #e0f2fe;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  overflow: hidden;
+  white-space: nowrap;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.name-unique.animate-once {
+  animation: name-typewriter 4s steps(16, end) forwards 4.5s,
+    name-float 4s ease-in-out infinite 8.5s;
+}
+
+.name-unique.animation-complete {
+  animation: name-float 4s ease-in-out infinite;
+}
+
+.floating {
+  animation: name-float 4s ease-in-out infinite;
+}
+
+.name-unique::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(
+    circle,
+    rgba(59, 130, 246, 0.3) 0%,
+    rgba(147, 51, 234, 0.2) 30%,
+    rgba(236, 72, 153, 0.1) 60%,
+    transparent 100%
+  );
+  transform: translate(-50%, -50%) rotateZ(45deg);
+  border-radius: 50%;
+  animation: name-float 3s ease-in-out infinite reverse;
+  z-index: -1;
+}
+
+.name-unique::after {
+  content: "✨";
+  position: absolute;
+  top: -20px;
+  right: -10px;
+  font-size: 1.2rem;
+  animation: name-particle 2s ease-in-out infinite;
+  z-index: 1;
+}
+
+/* Particle effects */
+.name-container {
+  position: relative;
+  display: inline-block;
+}
+
+.name-container::before,
+.name-container::after {
+  content: "⭐";
+  position: absolute;
+  font-size: 0.8rem;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.name-container::before {
+  top: -15px;
+  left: -15px;
+  animation: name-particle 3s ease-in-out infinite 0.5s;
+}
+
+.name-container::after {
+  bottom: -15px;
+  right: -15px;
+  animation: name-particle 3s ease-in-out infinite 1.5s;
+}
+
+/* Glitch effect for inline name */
+@keyframes glitch-1 {
+  0%,
+  100% {
+    transform: translateX(0);
+    filter: hue-rotate(0deg);
+  }
+  10% {
+    transform: translateX(-2px);
+    filter: hue-rotate(90deg);
+  }
+  20% {
+    transform: translateX(2px);
+    filter: hue-rotate(180deg);
+  }
+  30% {
+    transform: translateX(-1px);
+    filter: hue-rotate(270deg);
+  }
+  40% {
+    transform: translateX(1px);
+    filter: hue-rotate(360deg);
+  }
+}
+
+.name-glitch {
+  position: relative;
+  color: #ec4899;
+  font-weight: bold;
+  text-shadow: -2px 0 #00ffff, 2px 0 #ff00ff;
+  animation: glitch-1 2s ease-in-out infinite;
+}
+
+.name-glitch::before,
+.name-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.name-glitch::before {
+  color: #00ffff;
+  z-index: -1;
+  animation: glitch-1 0.3s ease-in-out infinite reverse;
+  clip: rect(0, 900px, 0, 0);
+}
+
+.name-glitch::after {
+  color: #ff00ff;
+  z-index: -2;
+  animation: glitch-1 0.4s ease-in-out infinite;
+  clip: rect(0, 900px, 0, 0);
+}
+
+/* Hover effects for name */
+.name-unique:hover {
+  animation-play-state: paused;
+  transform: scale(1.1) rotateY(15deg);
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+.name-glitch:hover {
+  animation-duration: 0.1s;
+  text-shadow: -4px 0 #00ffff, 4px 0 #ff00ff, 0 0 20px #ffffff;
+}
+
+/* Vietnam Flag Animation */
+@keyframes flag-wave {
+  0%,
+  100% {
+    transform: translateY(6px) rotateZ(1deg);
+  }
+  50% {
+    transform: translateY(-6px) rotateZ(-1deg);
+  }
+}
+
+@keyframes flag-float {
+  0%,
+  100% {
+    transform: translateY(0px) rotateZ(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotateZ(3deg);
+  }
+}
+
+.vietnam-flag {
+  display: flex;
+  aspect-ratio: 3 / 2;
+  width: 80px;
+  height: 53px;
+  position: relative;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  animation: flag-float 4s ease-in-out infinite;
+}
+
+.flag-column {
+  flex: 1;
+  background: #da020e; /* Màu đỏ của cờ Việt Nam */
+  animation: flag-wave 800ms infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: backwards;
+}
+
+.star-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.vietnam-star {
+  width: 16px;
+  height: 16px;
+  color: #ffff00; /* Màu vàng của ngôi sao */
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+  animation: star-twinkle 2s ease-in-out infinite;
+}
+
+@keyframes star-twinkle {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
