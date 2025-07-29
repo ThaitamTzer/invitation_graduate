@@ -278,29 +278,160 @@ export default function HeroSection() {
                   />
                 </motion.div>
               </motion.div>
-              {/* Decorative elements */}
+              {/* Fun Emoji Decorations */}
               <motion.div
-                className="absolute -top-6 -right-6 w-24 h-24 bg-yellow-400 rounded-full opacity-80"
+                className="absolute -top-8 -right-8 text-4xl z-10 emoji-decoration"
                 animate={{
-                  rotate: 360,
+                  rotate: [0, 10, -10, 0],
+                  scale: [1, 1.3, 1],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                whileHover={{ scale: 1.5, rotate: 360 }}
+              >
+                🎓
+              </motion.div>
+
+              <motion.div
+                className="absolute -bottom-6 -left-6 text-3xl z-10 emoji-decoration"
+                animate={{
+                  y: [0, -15, 0],
+                  rotate: [0, -15, 15, 0],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.5,
+                }}
+                whileHover={{ scale: 1.4, y: -20 }}
+              >
+                🎉
+              </motion.div>
+
+              <motion.div
+                className="absolute top-1/4 -left-10 text-2xl z-10 emoji-decoration"
+                animate={{
+                  x: [0, 10, 0],
+                  rotate: [0, 20, 0],
+                }}
+                transition={{
+                  duration: 2.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1,
+                }}
+                whileHover={{ scale: 1.3, x: 15 }}
+              >
+                📚
+              </motion.div>
+
+              <motion.div
+                className="absolute bottom-1/3 -right-10 text-3xl z-10 emoji-decoration"
+                animate={{
                   scale: [1, 1.2, 1],
+                  rotate: [0, 180, 360],
                 }}
                 transition={{
-                  rotate: { duration: 8, repeat: Infinity, ease: "linear" },
-                  scale: { duration: 2, repeat: Infinity, ease: "easeInOut" },
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1.5,
                 }}
-              />
+                whileHover={{ scale: 1.5, rotate: 720 }}
+              >
+                🏆
+              </motion.div>
+
               <motion.div
-                className="absolute -bottom-4 -left-4 w-16 h-16 bg-pink-400 rounded-full opacity-60"
+                className="absolute top-1/2 -right-12 text-2xl z-10 emoji-decoration"
                 animate={{
-                  rotate: -360,
-                  y: [0, -10, 0],
+                  y: [0, -8, 8, 0],
+                  x: [0, 5, -5, 0],
                 }}
                 transition={{
-                  rotate: { duration: 6, repeat: Infinity, ease: "linear" },
-                  y: { duration: 3, repeat: Infinity, ease: "easeInOut" },
+                  duration: 3.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 2,
                 }}
-              />
+                whileHover={{ scale: 1.4, rotate: 45 }}
+              >
+                🌟
+              </motion.div>
+
+              <motion.div
+                className="absolute top-16 -left-6 text-2xl z-10 emoji-decoration"
+                animate={{
+                  rotate: [0, 360],
+                  scale: [1, 1.1, 0.9, 1],
+                }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+                whileHover={{ scale: 1.3, y: -10 }}
+              >
+                🎊
+              </motion.div>
+
+              <motion.div
+                className="absolute bottom-16 -right-8 text-2xl z-10 emoji-decoration"
+                animate={{
+                  y: [0, -12, 0],
+                  rotate: [0, -10, 10, 0],
+                }}
+                transition={{
+                  duration: 4.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.8,
+                }}
+                whileHover={{ scale: 1.3, rotate: 180 }}
+              >
+                🎈
+              </motion.div>
+
+              {/* Additional floating emojis */}
+              <motion.div
+                className="absolute top-8 right-1/4 text-xl z-5 emoji-decoration"
+                animate={{
+                  x: [0, 15, 0],
+                  y: [0, -20, 0],
+                  rotate: [0, 45, 0],
+                }}
+                transition={{
+                  duration: 7,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 3,
+                }}
+                whileHover={{ scale: 1.5 }}
+              >
+                🤓
+              </motion.div>
+
+              <motion.div
+                className="absolute bottom-20 left-1/4 text-xl z-5 emoji-decoration"
+                animate={{
+                  scale: [1, 1.3, 1],
+                  rotate: [0, -30, 30, 0],
+                }}
+                transition={{
+                  duration: 5.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 4,
+                }}
+                whileHover={{ scale: 1.4, y: -15 }}
+              >
+                😄
+              </motion.div>
+              <></>
               {/* Vietnam Flag GIF */}
               <motion.div
                 className="absolute -top-2 -left-8 z-20"
@@ -325,7 +456,6 @@ export default function HeroSection() {
                     alt="Lá cờ Việt Nam"
                     width={80}
                     height={53}
-                    className="rounded border-2 border-white/30 shadow-lg"
                     unoptimized // Cần thiết cho GIF
                   />
                 </motion.div>
@@ -355,7 +485,6 @@ export default function HeroSection() {
                     alt="Lá cờ Việt Nam"
                     width={60}
                     height={40}
-                    className="rounded border border-white/20 shadow-md"
                     unoptimized // Cần thiết cho GIF
                   />
                 </motion.div>
@@ -385,7 +514,6 @@ export default function HeroSection() {
                     alt="Lá cờ Việt Nam"
                     width={45}
                     height={30}
-                    className="rounded border border-white/15 shadow-sm opacity-75"
                     unoptimized
                   />
                 </motion.div>
