@@ -1,36 +1,131 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎓 Trang Web Mời Dự Lễ Tốt Nghiệp
 
-## Getting Started
+Trang web mời khách tham dự lễ tốt nghiệp được xây dựng với Next.js, shadcn/ui và Supabase.
 
-First, run the development server:
+## 🚀 Tính năng
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Trang chủ**: Giới thiệu về bản thân và ảnh cá nhân
+- **Thông tin sự kiện**: Chi tiết về địa điểm, thời gian và cách thức tham gia
+- **Đăng ký tham dự**: Form đăng ký với thông tin cá nhân và lời chúc
+- **Admin Dashboard**: Quản lý danh sách đăng ký, xác nhận/từ chối khách mời
+- **Responsive Design**: Tối ưu cho mọi thiết bị
+
+## 🛠️ Công nghệ sử dụng
+
+- **Framework**: Next.js 15 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS + shadcn/ui
+- **Backend**: Supabase (Database + Auth)
+- **Notifications**: Sonner (Toast)
+- **Icons**: Lucide React
+
+## 📦 Cài đặt
+
+1. **Cài đặt dependencies:**
+
+   ```bash
+   npm install
+   ```
+
+2. **Cấu hình Supabase:**
+
+   - Tạo project mới trên [Supabase](https://supabase.com)
+   - Copy file `.env.local.example` thành `.env.local`
+   - Điền thông tin Supabase vào file `.env.local`:
+     ```
+     NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+     NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+     SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
+     ```
+
+3. **Thiết lập Database:**
+
+   - Mở Supabase SQL Editor
+   - Chạy script trong file `database/supabase.sql`
+
+4. **Thêm ảnh cá nhân:**
+
+   - Đặt ảnh tốt nghiệp vào thư mục `public/` với tên `graduation-photo.jpg`
+
+5. **Chạy development server:**
+   ```bash
+   npm run dev
+   ```
+
+## 🎨 Tùy chỉnh
+
+### Thông tin cá nhân
+
+Chỉnh sửa các file component để thay đổi thông tin:
+
+- `src/components/HeroSection.tsx`: Tên, mô tả cá nhân
+- `src/components/VenueSection.tsx`: Thông tin sự kiện, địa điểm, thời gian
+- `src/app/layout.tsx`: Metadata của trang web
+
+### Mật khẩu Admin
+
+Thay đổi mật khẩu admin tại:
+
+- File: `src/app/admin/page.tsx`
+- Dòng: `if (password === 'admin123')` (đổi 'admin123' thành mật khẩu mong muốn)
+
+### Styling
+
+- Thay đổi màu sắc theme trong `components.json`
+- Tùy chỉnh CSS trong `src/app/globals.css`
+
+## 📱 Sử dụng
+
+### Cho khách mời:
+
+1. Truy cập trang chủ
+2. Xem thông tin sự kiện
+3. Điền form đăng ký tham dự
+4. Nhận thông báo xác nhận
+
+### Cho admin:
+
+1. Truy cập `/admin`
+2. Đăng nhập bằng mật khẩu
+3. Xem danh sách đăng ký
+4. Xác nhận/từ chối khách mời
+5. Xuất dữ liệu CSV
+
+## 🔐 Bảo mật
+
+- Row Level Security (RLS) được bật trên Supabase
+- Anonymous users chỉ có thể INSERT dữ liệu
+- Authenticated users có thể SELECT và UPDATE
+- Mật khẩu admin đơn giản (nên nâng cấp cho production)
+
+## 📊 Database Schema
+
+```sql
+registrations (
+  id: uuid (primary key)
+  created_at: timestamp
+  name: text
+  email: text
+  phone: text
+  message: text (optional)
+  status: enum ('pending', 'confirmed', 'declined')
+)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Deployment
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Vercel (Recommended)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Push code lên GitHub
+2. Kết nối repository với Vercel
+3. Thêm environment variables
+4. Deploy
 
-## Learn More
+## 📞 Hỗ trợ
 
-To learn more about Next.js, take a look at the following resources:
+Nếu có vấn đề khi sử dụng, vui lòng:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Kiểm tra console browser để xem lỗi
+2. Verify cấu hình Supabase
+3. Đảm bảo đã chạy SQL script
+4. Kiểm tra file `.env.local`
