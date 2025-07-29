@@ -54,7 +54,7 @@ export default function HeroSection() {
 
   return (
     <motion.section
-      className="min-h-screen bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-800 flex items-center justify-center relative overflow-hidden"
+      className="min-h-screen pt-11 bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-800 flex items-center justify-center relative overflow-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
@@ -89,8 +89,8 @@ export default function HeroSection() {
         }}
       />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto px-6 xl:px-10 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 sm:gap-12 md:gap-12 lg:gap-1 xl-gap-10  items-center">
           {/* Text Content */}
           <motion.div
             className="text-white space-y-8"
@@ -257,7 +257,7 @@ export default function HeroSection() {
               transition={{ duration: 0.3 }}
             >
               <motion.div
-                className="w-80 h-80 lg:w-full lg:h-full rounded-full overflow-hidden border-8 border-white/20 shadow-2xl"
+                className="w-80 h-80 lg:w-96 lg:h-96 xl:w-full xl:h-full rounded-full overflow-hidden border-8 border-white/20 shadow-2xl"
                 whileHover={{
                   borderColor: "rgba(255, 255, 255, 0.4)",
                   boxShadow:
@@ -296,7 +296,7 @@ export default function HeroSection() {
               </motion.div>
 
               <motion.div
-                className="absolute -bottom-6 -left-6 text-3xl z-10 emoji-decoration"
+                className="hidden sm:block absolute -bottom-6 -left-6 text-3xl z-10 emoji-decoration"
                 animate={{
                   y: [0, -15, 0],
                   rotate: [0, -15, 15, 0],
@@ -310,23 +310,6 @@ export default function HeroSection() {
                 whileHover={{ scale: 1.4, y: -20 }}
               >
                 🎉
-              </motion.div>
-
-              <motion.div
-                className="absolute top-1/4 -left-10 text-2xl z-10 emoji-decoration"
-                animate={{
-                  x: [0, 10, 0],
-                  rotate: [0, 20, 0],
-                }}
-                transition={{
-                  duration: 2.5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 1,
-                }}
-                whileHover={{ scale: 1.3, x: 15 }}
-              >
-                📚
               </motion.div>
 
               <motion.div
@@ -359,9 +342,7 @@ export default function HeroSection() {
                   delay: 2,
                 }}
                 whileHover={{ scale: 1.4, rotate: 45 }}
-              >
-                🌟
-              </motion.div>
+              ></motion.div>
 
               <motion.div
                 className="absolute top-16 -left-6 text-2xl z-10 emoji-decoration"
@@ -392,9 +373,7 @@ export default function HeroSection() {
                   delay: 0.8,
                 }}
                 whileHover={{ scale: 1.3, rotate: 180 }}
-              >
-                🎈
-              </motion.div>
+              ></motion.div>
 
               {/* Additional floating emojis */}
               <motion.div
@@ -462,7 +441,7 @@ export default function HeroSection() {
               </motion.div>
               {/* Second Vietnam Flag GIF */}
               <motion.div
-                className="absolute -bottom-8 -right-2 z-20"
+                className="hidden sm:block absolute -bottom-8 -right-2 z-20"
                 initial={{ x: 50, opacity: 0, rotate: 45 }}
                 animate={{ x: 0, opacity: 1, rotate: 15 }}
                 transition={{ duration: 1.2, delay: 3 }}
@@ -491,7 +470,7 @@ export default function HeroSection() {
               </motion.div>
               {/* Third floating Vietnam Flag */}
               <motion.div
-                className="absolute top-1/3 -right-12 z-10"
+                className="hidden sm:block absolute top-1/3 -right-12 z-10"
                 initial={{ x: 100, opacity: 0, scale: 0.5 }}
                 animate={{ x: 0, opacity: 0.8, scale: 1 }}
                 transition={{ duration: 1.5, delay: 4 }}

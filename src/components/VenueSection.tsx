@@ -28,7 +28,7 @@ export default function VenueSection() {
               <CardTitle className="text-xl">Ngày tổ chức</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-2xl font-bold text-gray-900">15/07/2025</p>
+              <p className="text-2xl font-bold text-gray-900">14/07/2025</p>
               <p className="text-gray-600">Thứ Bảy</p>
             </CardContent>
           </Card>
