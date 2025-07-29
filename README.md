@@ -1,6 +1,6 @@
 # 🎓 Trang Web Mời Dự Lễ Tốt Nghiệp
 
-Trang web mời khách tham dự lễ tốt nghiệp được xây dựng với Next.js, shadcn/ui và Supabase.
+Trang web mời khách tham dự lễ tốt nghiệp được xây dựng với Next.js, shadcn/ui và Supabase. **Đã được tối ưu SEO cho Google Search**.
 
 ## 🚀 Tính năng
 
@@ -9,6 +9,7 @@ Trang web mời khách tham dự lễ tốt nghiệp được xây dựng với 
 - **Đăng ký tham dự**: Form đăng ký với thông tin cá nhân và lời chúc
 - **Admin Dashboard**: Quản lý danh sách đăng ký, xác nhận/từ chối khách mời
 - **Responsive Design**: Tối ưu cho mọi thiết bị
+- **SEO Optimized**: Cấu hình SEO chuyên nghiệp để Google dễ dàng index
 
 ## 🛠️ Công nghệ sử dụng
 
@@ -18,6 +19,19 @@ Trang web mời khách tham dự lễ tốt nghiệp được xây dựng với 
 - **Backend**: Supabase (Database + Auth)
 - **Notifications**: Sonner (Toast)
 - **Icons**: Lucide React
+- **SEO**: Structured Data, OpenGraph, Twitter Cards, Sitemap
+
+## 🔍 Tính năng SEO
+
+- ✅ **Meta Tags**: Title, Description, Keywords tối ưu
+- ✅ **Open Graph**: Hỗ trợ chia sẻ Facebook, LinkedIn
+- ✅ **Twitter Cards**: Hiển thị đẹp khi chia sẻ Twitter
+- ✅ **Structured Data**: Schema.org Event markup
+- ✅ **Sitemap**: Tự động tạo sitemap.xml
+- ✅ **Robots.txt**: Hướng dẫn crawler
+- ✅ **Canonical URLs**: Tránh duplicate content
+- ✅ **Web Manifest**: PWA ready
+- ✅ **Performance**: Tối ưu Core Web Vitals
 
 ## 📦 Cài đặt
 
@@ -90,7 +104,42 @@ Chỉnh sửa các file component để thay đổi thông tin:
 - Anonymous users chỉ có thể INSERT dữ liệu
 - Authenticated users có thể SELECT và UPDATE
 
-## 📊 Database Schema
+## � Hướng dẫn SEO Setup
+
+### 1. Google Search Console
+
+- Đăng ký tại [Google Search Console](https://search.google.com/search-console/)
+- Thêm property với domain của bạn
+- Verify ownership bằng meta tag hoặc DNS
+- Submit sitemap: `https://yourdomain.com/sitemap.xml`
+
+### 2. Environment Variables cần thiết
+
+```bash
+NEXT_PUBLIC_SITE_URL=https://yourdomain.com
+NEXT_PUBLIC_GOOGLE_VERIFICATION=your-verification-code
+NEXT_PUBLIC_GRADUATE_NAME=Tên của bạn
+```
+
+### 3. Hình ảnh SEO
+
+- Thêm `graduation-og.jpg` (1200x630px) vào thư mục `public/`
+- Tạo favicon.ico và các icon khác trong `public/`
+- Thêm apple-touch-icon.png (180x180px)
+
+### 4. Google Analytics (tùy chọn)
+
+- Tạo GA4 property
+- Thêm GoogleAnalytics component vào layout
+- Thêm GA_MEASUREMENT_ID vào environment
+
+### 5. Kiểm tra SEO
+
+- Sử dụng [PageSpeed Insights](https://pagespeed.web.dev/)
+- Test với [Rich Results Test](https://search.google.com/test/rich-results)
+- Kiểm tra [Mobile-Friendly Test](https://search.google.com/test/mobile-friendly)
+
+## �📊 Database Schema
 
 ```sql
 registrations (
@@ -98,9 +147,39 @@ registrations (
   created_at: timestamp
   name: text
   email: text
-  cccd: varchar
-  status: enum ('pending', 'confirmed', 'declined')
+  cccd: text
+  confirmed: boolean (default false)
+  admin_notes: text
 )
+```
+
+## 🚀 Deployment trên Vercel
+
+1. Push code lên GitHub
+2. Import project vào Vercel
+3. Thêm environment variables:
+   - NEXT_PUBLIC_SITE_URL
+   - NEXT_PUBLIC_GRADUATE_NAME
+   - NEXT_PUBLIC_GOOGLE_VERIFICATION
+   - Các Supabase keys
+4. Deploy và test SEO
+
+## 📈 Monitoring SEO
+
+Sau khi deploy, kiểm tra:
+
+- [ ] Sitemap.xml accessible
+- [ ] Robots.txt hoạt động
+- [ ] Meta tags hiển thị đúng
+- [ ] OpenGraph preview trên social media
+- [ ] Google Search Console indexing
+- [ ] Core Web Vitals scores
+
+**Lưu ý**: Việc Google index website có thể mất từ vài giờ đến vài ngày tùy thuộc vào nhiều yếu tố.
+cccd: varchar
+status: enum ('pending', 'confirmed', 'declined')
+)
+
 ```
 
 ## 🚀 Deployment
@@ -111,3 +190,4 @@ registrations (
 2. Kết nối repository với Vercel
 3. Thêm environment variables
 4. Deploy
+```

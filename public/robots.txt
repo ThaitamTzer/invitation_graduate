@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Allow: /admin
+
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/dashboard
+
+Sitemap: https://invitation-graduate.vercel.app/sitemap.xml

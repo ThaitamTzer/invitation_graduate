@@ -1,0 +1,21 @@
+{
+  "name": "Lễ Tốt Nghiệp 2025 - Lê Trần Thái Tâm",
+  "short_name": "Lễ Tốt Nghiệp 2025",
+  "description": "Mời bạn tham dự lễ tốt nghiệp đại học của Lê Trần Thái Tâm năm 2025",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1e40af",
+  "theme_color": "#1e40af",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
