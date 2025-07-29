@@ -28,8 +28,8 @@ export default function VenueSection() {
               <CardTitle className="text-xl">Ngày tổ chức</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-2xl font-bold text-gray-900">14/07/2025</p>
-              <p className="text-gray-600">Thứ Bảy</p>
+              <p className="text-2xl font-bold text-gray-900">14/08/2025</p>
+              <p className="text-gray-600">Thứ Năm</p>
             </CardContent>
           </Card>
 
@@ -39,7 +39,7 @@ export default function VenueSection() {
               <CardTitle className="text-xl">Thời gian</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-2xl font-bold text-gray-900">14:00</p>
+              <p className="text-2xl font-bold text-gray-900">15:00 - 17:00</p>
               <p className="text-gray-600">Chiều</p>
             </CardContent>
           </Card>
@@ -50,8 +50,10 @@ export default function VenueSection() {
               <CardTitle className="text-xl">Địa điểm</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-lg font-bold text-gray-900">Hội trường A</p>
-              <p className="text-gray-600">Đại học ABC</p>
+              <p className="text-lg font-bold text-gray-900">
+                Số 69/68 Đặng Thùy Trâm, Phường Bình Lợi Trung, TP.HCM
+              </p>
+              <p className="text-gray-600">Đại học Văn Lang cơ sở 3</p>
             </CardContent>
           </Card>
 
@@ -78,22 +80,23 @@ export default function VenueSection() {
             <CardContent className="space-y-4">
               <div>
                 <h4 className="font-semibold text-gray-900 mb-2">
-                  Hội trường A - Đại học ABC
+                  Hội trường Trịnh Công Sơn - Đại học Văn Lang
                 </h4>
                 <p className="text-gray-600 mb-4">
-                  123 Đường Đại Học, Phường 1, Quận 1, TP.HCM
+                  Số 69/68 Đặng Thùy Trâm, Phường Bình Lợi Trung, TP.HCM
                 </p>
               </div>
 
               <div>
                 <h4 className="font-semibold text-gray-900 mb-2">
-                  Phương tiện di chuyển:
+                  Phương tiện:
                 </h4>
                 <ul className="text-gray-600 space-y-1">
-                  <li>• Xe bus: Tuyến 01, 05, 19 (Trạm Đại học ABC)</li>
-                  <li>• Xe máy: Có bãi gửi xe miễn phí</li>
-                  <li>• Ô tô: Parking Building B (Phí 20.000đ/giờ)</li>
-                  <li>• Grab/Taxi: Điểm đón trước cổng chính</li>
+                  <li className="font-semibold">
+                    • Ưu tiên đi xe công nghệ tới nhen mọi người vì sẽ khá là
+                    đông đúc đấy
+                  </li>
+                  <li>• Xe máy: Có bãi gửi xe (Phí 3.000đ/lượt)</li>
                 </ul>
               </div>
             </CardContent>
@@ -103,7 +106,8 @@ export default function VenueSection() {
             <CardHeader>
               <CardTitle className="text-2xl">Quy trình tham dự</CardTitle>
               <CardDescription>
-                Hướng dẫn chi tiết cho khách mời
+                Hướng dẫn chi tiết cho khách mời{" "}
+                <strong>(không phải sinh viên Văn Lang)</strong>
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -127,7 +131,7 @@ export default function VenueSection() {
                   <div>
                     <h4 className="font-semibold">Nhận xác nhận</h4>
                     <p className="text-gray-600 text-sm">
-                      Email xác nhận sẽ được gửi trong 24h
+                      Email xác nhận sẽ được gửi trong 1 đến 2 ngày
                     </p>
                   </div>
                 </div>
@@ -149,9 +153,9 @@ export default function VenueSection() {
                     4
                   </div>
                   <div>
-                    <h4 className="font-semibold">Tiệc mừng</h4>
+                    <h4 className="font-semibold">Giao lưu</h4>
                     <p className="text-gray-600 text-sm">
-                      Buffet và chụp ảnh kỷ niệm sau lễ
+                      Giao lưu võ thuật và chụp ảnh kỷ niệm sau lễ
                     </p>
                   </div>
                 </div>

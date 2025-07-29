@@ -35,12 +35,10 @@ export default function AdminDashboard() {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    if (user) {
+    if (user?.email === process.env.NEXT_PUBLIC_ADMIN_EMAIL) {
       fetchRegistrations();
     }
   }, [user]);
-
-  console.log("User:", user);
 
   const fetchRegistrations = async () => {
     try {
@@ -84,8 +82,7 @@ export default function AdminDashboard() {
       STT: index + 1,
       Tên: reg.name,
       Email: reg.email,
-      "Số điện thoại": reg.phone,
-      "Lời chúc": reg.message || "Không có",
+      "Số CCCD": reg.cccd,
       "Trạng thái":
         reg.status === "confirmed"
           ? "Đã xác nhận"
@@ -156,7 +153,7 @@ export default function AdminDashboard() {
     (reg) =>
       reg.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       reg.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      reg.phone.includes(searchTerm)
+      reg.cccd.includes(searchTerm)
   );
 
   const stats = {
@@ -276,7 +273,7 @@ export default function AdminDashboard() {
             <div className="flex items-center space-x-2">
               <Search className="w-4 h-4 text-gray-400" />
               <Input
-                placeholder="Tìm theo tên, email hoặc số điện thoại..."
+                placeholder="Tìm theo tên, email hoặc số CCCD..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="max-w-sm"
@@ -305,8 +302,7 @@ export default function AdminDashboard() {
                   <TableRow>
                     <TableHead>Tên</TableHead>
                     <TableHead>Email</TableHead>
-                    <TableHead>Điện thoại</TableHead>
-                    <TableHead>Lời chúc</TableHead>
+                    <TableHead>Số CCCD</TableHead>
                     <TableHead>Trạng thái</TableHead>
                     <TableHead>Ngày đăng ký</TableHead>
                     <TableHead>Hành động</TableHead>
@@ -319,10 +315,7 @@ export default function AdminDashboard() {
                         {registration.name}
                       </TableCell>
                       <TableCell>{registration.email}</TableCell>
-                      <TableCell>{registration.phone}</TableCell>
-                      <TableCell className="max-w-xs truncate">
-                        {registration.message || "Không có"}
-                      </TableCell>
+                      <TableCell>{registration.cccd}</TableCell>
                       <TableCell>
                         <Badge
                           variant={

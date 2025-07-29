@@ -12,15 +12,13 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 
 export default function RegistrationForm() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "",
-    message: "",
+    cccd: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -33,8 +31,7 @@ export default function RegistrationForm() {
         {
           name: formData.name,
           email: formData.email,
-          phone: formData.phone,
-          message: formData.message,
+          cccd: formData.cccd,
           status: "pending",
         },
       ]);
@@ -42,7 +39,7 @@ export default function RegistrationForm() {
       if (error) throw error;
 
       toast.success("Đăng ký thành công! Cảm ơn bạn đã tham gia.");
-      setFormData({ name: "", email: "", phone: "", message: "" });
+      setFormData({ name: "", email: "", cccd: "" });
     } catch (error) {
       toast.error("Có lỗi xảy ra. Vui lòng thử lại.");
       console.error("Error:", error);
@@ -69,10 +66,21 @@ export default function RegistrationForm() {
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Đăng Ký Tham Gia
+              Đăng Ký Tham Dự
             </h2>
-            <p className="text-lg text-gray-600">
-              Vui lòng điền thông tin để xác nhận tham dự lễ tốt nghiệp
+            <p className="text-lg">
+              Nhằm đảm bảo an ninh, nhà trường yêu cầu khách mời{" "}
+              <strong>không phải là sinh viên Văn Lang</strong> cần đăng ký
+              thông tin để nhận mã QR check-in.
+            </p>
+            <p className="text-lg mb-2">
+              Vui lòng điền đầy đủ thông tin để xác nhận tham dự lễ tốt nghiệp
+            </p>
+            <p className="text-red-500 text-sm">
+              *Số CCCD sẽ được dùng để xác thực danh tính khi tham dự sự kiện.
+            </p>
+            <p className="text-red-500 text-sm">
+              *Thông tin của bạn sẽ được bảo mật và chỉ sử dụng cho sự kiện này.
             </p>
           </div>
 
@@ -80,7 +88,8 @@ export default function RegistrationForm() {
             <CardHeader>
               <CardTitle>Thông tin đăng ký</CardTitle>
               <CardDescription>
-                Tất cả các trường có dấu (*) là bắt buộc
+                Vui lòng điền đầy đủ: Họ tên, Số CCCD và Email. Tất cả đều bắt
+                buộc (*)
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -94,7 +103,22 @@ export default function RegistrationForm() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    placeholder="Nhập họ và tên của bạn"
+                    placeholder="Nhập họ và tên đầy đủ"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="cccd">Số CCCD *</Label>
+                  <Input
+                    id="cccd"
+                    name="cccd"
+                    type="text"
+                    value={formData.cccd}
+                    onChange={handleChange}
+                    required
+                    placeholder="Nhập số căn cước công dân (12 số)"
+                    pattern="[0-9]{12}"
+                    maxLength={12}
                   />
                 </div>
 
@@ -108,31 +132,6 @@ export default function RegistrationForm() {
                     onChange={handleChange}
                     required
                     placeholder="Nhập địa chỉ email"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="phone">Số điện thoại *</Label>
-                  <Input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                    placeholder="Nhập số điện thoại"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="message">Lời chúc (tùy chọn)</Label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Gửi lời chúc đến người tốt nghiệp..."
-                    rows={4}
                   />
                 </div>
 

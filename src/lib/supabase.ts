@@ -16,7 +16,6 @@ export type Registration = {
   created_at: string;
   name: string;
   email: string;
-  phone: string;
-  message?: string;
+  cccd: string;
   status: "pending" | "confirmed" | "declined";
 };
