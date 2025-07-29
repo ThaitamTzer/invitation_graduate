@@ -45,7 +45,7 @@ Trang web mời khách tham dự lễ tốt nghiệp được xây dựng với 
 
 4. **Thêm ảnh cá nhân:**
 
-   - Đặt ảnh tốt nghiệp vào thư mục `public/` với tên `graduation-photo.jpg`
+   - Đặt ảnh tốt nghiệp vào thư mục `public/` với tên `me.jpg`
 
 5. **Chạy development server:**
    ```bash
@@ -61,13 +61,6 @@ Chỉnh sửa các file component để thay đổi thông tin:
 - `src/components/HeroSection.tsx`: Tên, mô tả cá nhân
 - `src/components/VenueSection.tsx`: Thông tin sự kiện, địa điểm, thời gian
 - `src/app/layout.tsx`: Metadata của trang web
-
-### Mật khẩu Admin
-
-Thay đổi mật khẩu admin tại:
-
-- File: `src/app/admin/page.tsx`
-- Dòng: `if (password === 'admin123')` (đổi 'admin123' thành mật khẩu mong muốn)
 
 ### Styling
 
@@ -86,17 +79,16 @@ Thay đổi mật khẩu admin tại:
 ### Cho admin:
 
 1. Truy cập `/admin`
-2. Đăng nhập bằng mật khẩu
+2. Đăng nhập
 3. Xem danh sách đăng ký
 4. Xác nhận/từ chối khách mời
-5. Xuất dữ liệu CSV
+5. Xuất dữ liệu excel
 
 ## 🔐 Bảo mật
 
 - Row Level Security (RLS) được bật trên Supabase
 - Anonymous users chỉ có thể INSERT dữ liệu
 - Authenticated users có thể SELECT và UPDATE
-- Mật khẩu admin đơn giản (nên nâng cấp cho production)
 
 ## 📊 Database Schema
 
@@ -106,8 +98,7 @@ registrations (
   created_at: timestamp
   name: text
   email: text
-  phone: text
-  message: text (optional)
+  cccd: varchar
   status: enum ('pending', 'confirmed', 'declined')
 )
 ```
@@ -120,12 +111,3 @@ registrations (
 2. Kết nối repository với Vercel
 3. Thêm environment variables
 4. Deploy
-
-## 📞 Hỗ trợ
-
-Nếu có vấn đề khi sử dụng, vui lòng:
-
-1. Kiểm tra console browser để xem lỗi
-2. Verify cấu hình Supabase
-3. Đảm bảo đã chạy SQL script
-4. Kiểm tra file `.env.local`
