@@ -175,6 +175,10 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <meta
+          name="google-site-verification"
+          content="jOPzX6yV61OBfZqfA6pb21S_M_0eqECRHtw6shEwf9g"
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
