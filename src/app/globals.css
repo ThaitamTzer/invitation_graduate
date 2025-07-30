@@ -501,3 +501,39 @@
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
+
+/* Disable all animations on mobile devices for performance */
+@media (max-width: 767px) {
+  /* Disable all CSS animations and transitions */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+
+  /* Specifically disable known animation classes */
+  .special-word,
+  .name-unique,
+  .floating,
+  .animate-bounce,
+  .animate-pulse,
+  .animate-float,
+  .emoji-decoration,
+  .vietnam-flag,
+  .flag-column,
+  .vietnam-star {
+    animation: none !important;
+  }
+
+  /* Disable hover effects on mobile */
+  .name-unique:hover,
+  .name-glitch:hover,
+  .emoji-decoration:hover {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}

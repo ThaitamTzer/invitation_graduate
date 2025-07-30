@@ -4,11 +4,25 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import HeroSectionMobile from "./HeroSectionMobile";
 
 export default function HeroSection() {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [nameAnimationComplete, setNameAnimationComplete] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const words = ["bạn", "cô chú", "anh chị", "bạn", "cốt", "mọi người"];
+
+  // Detect mobile screen size
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkIsMobile();
+    window.addEventListener("resize", checkIsMobile);
+
+    return () => window.removeEventListener("resize", checkIsMobile);
+  }, []);
 
   useEffect(() => {
     const wordDurations = [2000, 2000, 2000, 2000, 2000, 4000]; // mọi người giữ lâu nhất (4 giây)
@@ -51,6 +65,11 @@ export default function HeroSection() {
       colors[currentWordIndex % colors.length]
     } drop-shadow-lg animate-bounce`;
   };
+
+  // Use mobile component for mobile devices
+  if (isMobile) {
+    return <HeroSectionMobile />;
+  }
 
   return (
     <motion.section
@@ -110,7 +129,7 @@ export default function HeroSection() {
                 <motion.span
                   className="year-appear inline-block"
                   initial={{ opacity: 0, scale: 0.5 }}
-                  animate={{ opacity: 1, scale: 1 }}
+                  animate={{ opacity: 1 }}
                   transition={{ duration: 1, delay: 1.5 }}
                 >
                   Lễ Tốt Nghiệp
@@ -125,7 +144,7 @@ export default function HeroSection() {
                 </motion.span>
               </motion.h1>
               <motion.div
-                className="name-container"
+                className="name-container h-[100px]"
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{
@@ -142,7 +161,7 @@ export default function HeroSection() {
                       : "animate-once"
                   }`}
                   whileHover={{
-                    scale: 1.1,
+                    scale: 1,
                     rotateY: 15,
                     transition: { duration: 0.3 },
                   }}
